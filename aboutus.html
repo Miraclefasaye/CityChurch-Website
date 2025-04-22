@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us – City Church Halifax</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f5f5;
+      --header-bg: linear-gradient(135deg, #e0f7fa, #b2ebf2, #80deea);
+      --accent: #00bcd4;
+      --text-dark: #37474f;
+      --white: #ffffff;
+    }
+
+    html, body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--accent);
+    }
+
+    header {
+      background: var(--header-bg);
+      padding: 1rem 2rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    nav a {
+      font-weight: 500;
+      font-size: 1rem;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 4px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background-color: var(--accent);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    nav a.active {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 1rem;
+      flex: 1;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    .about-section h2 {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .about-section p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+
+    .about-image {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .about-image img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      background: var(--header-bg);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    footer .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    footer .quick-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    footer .btn {
+      padding: 0.5rem 1rem;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+
+    .social-links {
+      margin-top: 0.5rem;
+    }
+
+    .social-links img {
+      width: 32px;
+      filter: drop-shadow(0 0 5px var(--accent));
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">CITYCHURCH</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="nextsteps.html">Next Steps</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+        <li><a href="photos.html">Photos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="about-section">
+      <h2>A Little More About Us</h2>
+      <div class="about-image">
+        <img src="375876199_704416011724711_635235102131863397_n-1.jpg" alt="About City Church">
+      </div>
+      <p>We understand that for some, church can be a little uncomfortable, which can cause a certain measure of apprehension or even fear. Jesus lived the most amazing life, and His message is powerful, practical and revolutionary, yet this image of the church is not always well portrayed in the media today.</p>
+      <p>Church for us is a “getting together” of people who are being changed day by day by following Jesus. We're far from perfect, and that is why we understand the need for the church. Sometimes life is messy, often chaotic, but as we journey together we find ourselves as part of a community of faith where we find encouragement, hope, strength and life. If you are on a journey towards faith, whatever stage you are at, we’ve found the Church Family helps people on that journey. We look forward to meeting you.</p>
+      <p>Most people dress casually, so don’t worry about that. We are a Pentecostal church that believes in the ministry of the Holy Spirit.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="quick-links">
+        <a class="btn" href="index.html">Home</a>
+        <a class="btn" href="aboutus.html">About Us</a>
+        <a class="btn" href="nextsteps.html">Next Steps</a>
+        <a class="btn" href="contactus.html">Contact</a>
+        <a class="btn" href="photos.html">Photos</a>
+      </div>
+      <p><strong>Call:</strong> 902-479-2489</p>
+      <p>276 Herring Cove Road, Halifax NS B3P 1M1</p>
+      <p><a href="mailto:C.citychurch@ns.sympatico.ca" style="color:var(--accent);">C.citychurch@ns.sympatico.ca</a></p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/CityChurchhalifax/live_videos" target="_blank">
+          <img src="wpimages/wp7c7fa511_06.png" alt="Facebook">
+        </a>
+        <a href="https://www.youtube.com/@citychurchhalifax5182" target="_blank">
+          <img src="wpimages/wp9eb22f9e_06.png" alt="YouTube">
+        </a>
+      </div>
+      <p>&copy; 2025 City Church Halifax. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const links = document.querySelectorAll('nav a');
+    const current = window.location.pathname.split("/").pop();
+    links.forEach(link => {
+      if (link.getAttribute("href") === current) {
+        link.classList.add("active");
+      }
+    });
+  </script>
+</body>
+</html>

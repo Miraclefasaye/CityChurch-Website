@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home – City Church Halifax</title>
+
+  <!-- Friendly Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Lighter, Warm Palette */
+    :root {
+      --bg: #f5f5f5;
+      --header-bg: linear-gradient(135deg, #e0f7fa, #b2ebf2, #80deea);
+      --accent: #00bcd4;
+      --text-dark: #37474f;
+      --white: #ffffff;
+      --card-bg: rgba(255,255,255,0.8);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:'Poppins',sans-serif;
+      background:var(--bg);
+      color:var(--text-dark);
+      line-height:1.6;
+
+      /* ✨ Add fade-in animation */
+      opacity: 0;
+      animation: fadeIn 1s ease-in forwards;
+    }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+    /* Header – centered logo and nav */
+    header {
+      background: var(--header-bg);
+      padding: 1rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center horizontally */
+      justify-content: center; /* Center vertically */
+      text-align: center; /* Make CITYCHURCH text centered */
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      font-size:1.75rem; font-weight:700;
+      color:var(--accent);
+      letter-spacing:2px;
+      text-transform:uppercase;
+      margin-bottom:0.5rem;
+    }
+    nav ul {
+      list-style:none;
+      display:flex;
+      gap:2rem;
+      justify-content:center;
+    }
+    nav a {
+      position:relative; padding:.5rem;
+      font-weight:500; text-transform:uppercase;
+      font-size:0.9rem; color:var(--text-dark);
+      transition: color .3s;
+    }
+    nav a:hover { color:var(--accent); }
+    nav a::after {
+      content: '';
+      position:absolute;
+      left:0; bottom:0;
+      width:0; height:2px;
+      background: var(--accent);
+      transition: width .3s;
+    }
+    nav a:hover::after { width:100%; }
+
+    /* Slider */
+    #slider { position:relative; margin:2rem 0; overflow:hidden; }
+    .slide { display:none; }
+    .slide.active { display:block; }
+    .slide img { width:100%; height:auto; filter: brightness(0.9); }
+    .caption {
+      position:absolute;
+      top:50%; left:50%; transform:translate(-50%,-50%);
+      text-align:center;
+    }
+    .caption img { max-width:80%; height:auto; filter: drop-shadow(0 0 8px var(--accent)); }
+
+    /* Main content */
+    .container { max-width:1100px; margin:0 auto; padding:2rem 1rem; }
+    section { margin-bottom:3rem; }
+
+    /* Welcome Section */
+    .welcome h2 {
+      font-size:2.5rem; color:var(--accent);
+      margin-bottom:.5rem;
+    }
+    .welcome p { font-size:1rem; }
+
+    /* Quick Links Grid */
+    .quick-grid h2 {
+      font-size:2rem; margin-bottom:1rem;
+      text-align:center; color:var(--accent);
+    }
+    .quick-grid .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+      gap:1rem;
+    }
+    .quick-grid .grid-item {
+      background:var(--white);
+      padding:1rem;
+      border-radius:8px;
+      text-align:center;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      transition:transform .2s;
+    }
+    .quick-grid .grid-item img {
+      width:100%; height:auto;
+      border-radius:4px;
+    }
+    .quick-grid .grid-item h4 {
+      margin-top:0.5rem;
+      font-size:1rem;
+      color:var(--accent);
+    }
+    .quick-grid .grid-item:hover {
+      transform:scale(1.05);
+    }
+
+    /* Pastor Section */
+    .pastor { display:flex; align-items:center; gap:2rem; flex-wrap:wrap; }
+    .pastor img {
+      width:180px;
+      border-radius:50%;
+      box-shadow:0 0 8px rgba(0,188,212,0.5);
+    }
+    .pastor-content h3 {
+      font-size:2rem;
+      color:var(--accent);
+      margin-bottom:.5rem;
+    }
+    .pastor-content p { font-size:1rem; }
+
+    /* Info Cards */
+    .info-cards {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:1rem;
+    }
+    .card {
+      background:var(--white);
+      padding:1.5rem;
+      border-radius:8px;
+      text-align:center;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+    .card h3 {
+      font-size:1.3rem;
+      color:var(--accent);
+      margin-bottom:.5rem;
+    }
+    .card p { font-size:1rem; }
+
+    /* Footer */
+    footer {
+      background:var(--header-bg);
+      color:var(--white);
+      text-align:center;
+      padding:2rem 1rem;
+    }
+    footer .container {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:1rem;
+    }
+    footer .quick-links {
+      display:flex;
+      gap:.5rem;
+      flex-wrap:wrap;
+      margin-bottom:1rem;
+    }
+    footer .quick-links .btn {
+      padding:.5rem 1rem;
+      background:var(--accent);
+      color:var(--white);
+      border-radius:4px;
+      font-size:.85rem;
+    }
+    footer p { margin:0; font-size:.9rem; }
+    .social-links { margin-top:.5rem; }
+    .social-links img {
+      width:32px;
+      filter:drop-shadow(0 0 5px var(--accent));
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="logo">CITYCHURCH</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="aboutus.html">About Us</a></li>
+          <li><a href="nextsteps.html">Next Steps</a></li>
+          <li><a href="contactus.html">Contact</a></li>
+          <li><a href="photos.html">Photos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slider -->
+  <section id="slider">
+    <div class="slide active">
+      <img src="375876199_704416011724711_635235102131863397_n.jpg" alt="Welcome Home">
+      <div class="caption"><img src="wpimages/wp9272c9c1_06.png" alt="A Place For YOU!"></div>
+    </div>
+    <div class="slide">
+      <img src="375876199_704416011724711_635235102131863397_n - Copy.jpg" alt="Faith, Family and Friends">
+      <div class="caption"><img src="wpimages/wpda7a0bc7_06.png" alt="Faith, Family And Friends!"></div>
+    </div>
+    <div class="slide">
+      <img src="stage.jpg" alt="Our Church">
+      <div class="caption"><img src="wpimages/wpf7522301_06.png" alt="Come Worship With Us!"></div>
+    </div>
+    <div class="slide">
+      <a href="https://www.facebook.com/CityChurchhalifax/videos" target="_blank"><img src="facebook_live.webp" alt="Facebook Live"></a>
+    </div>
+    <div class="slide">
+      <a href="https://give.tithe.ly/?formId=7e0e8666-6864-11ee-90fc-1260ab546d11" target="_blank"><img src="Give-Online-Slide2.x60128.jpeg" alt="Give Online"></a>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <section class="welcome">
+      <h2>Welcome to City Church Halifax</h2>
+      <p>276 Herring Cove Rd, Halifax NS</p>
+      <p>Join our vibrant community for worship, fellowship, and purpose. We can’t wait to meet you!</p>
+    </section>
+
+    <section class="quick-grid">
+      <h2>Quick Links</h2>
+      <div class="grid">
+        <a href="https://iframe.dacast.com/live/6ea4618901a3a8556d083a7d5ce8c06d/4caafe1e-213b-b00a-0fb8-e08d5108f186" class="grid-item" target="_blank">
+          <img src="375876199_704416011724711_635235102131863397_n.jpg" alt="Sunday Live Stream Service">
+          <h4>Live Stream</h4>
+        </a>
+        <a href="https://give.tithe.ly/?formId=7e0e8666-6864-11ee-90fc-1260ab546d11" class="grid-item" target="_blank">
+          <img src="Give-Online-Slide2.x60128.jpeg" alt="Give Online">
+          <h4>Give Online</h4>
+        </a>
+        <a href="https://www.facebook.com/CityChurchhalifax/videos" class="grid-item" target="_blank">
+          <img src="facebook_live.webp" alt="Facebook Live">
+          <h4>Facebook Live</h4>
+        </a>
+        <a href="https://www.youtube.com/@citychurchhalifax5182" class="grid-item" target="_blank">
+          <img src="wpimages/wp9eb22f9e_06.png" alt="YouTube">
+          <h4>YouTube</h4>
+        </a>
+      </div>
+    </section>
+
+    <section class="pastor">
+      <img src="wpimages/wpa8aa89a8_05_06.jpg" alt="Pastor Gerald Kendrick">
+      <div class="pastor-content">
+        <h3>Pastor Gerald Kendrick</h3>
+        <p>“Hello! Welcome to our website. I hope you find everything you need. I look forward to meeting you this Sunday!”</p>
+      </div>
+    </section>
+
+    <section class="info-cards">
+      <div class="card"><h3>Sunday Service</h3><p>10:30 AM</p></div>
+      <div class="card"><h3>Wednesday Night Prayer</h3><p>7:00 PM on Zoom</p></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="quick-links">
+        <a class="btn" href="index.html">Home</a>
+        <a class="btn" href="aboutus.html">About Us</a>
+        <a class="btn" href="nextsteps.html">Next Steps</a>
+        <a class="btn" href="contactus.html">Contact</a>
+        <a class="btn" href="photos.html">Photos</a>
+      </div>
+      <p><strong>Call:</strong> 902-479-2489</p>
+      <p>276 Herring Cove Road, Halifax NS B3P 1M1</p>
+      <p><a href="mailto:C.citychurch@ns.sympatico.ca" style="color:var(--accent);">C.citychurch@ns.sympatico.ca</a></p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/CityChurchhalifax/live_videos" target="_blank"><img src="wpimages/wp7c7fa511_06.png" alt="Facebook"></a>
+        <a href="https://www.youtube.com/@citychurchhalifax5182" target="_blank"><img src="wpimages/wp9eb22f9e_06.png" alt="YouTube"></a>
+      </div>
+      <p>&copy; 2025 City Church Halifax. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Rotate slides every 5 seconds
+    document.addEventListener('DOMContentLoaded', () => {
+      const slides = document.querySelectorAll('#slider .slide');
+      let idx = 0;
+      setInterval(() => {
+        slides[idx].classList.remove('active');
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.add('active');
+      }, 5000);
+    });
+  </script>
+
+</body>
+</html>

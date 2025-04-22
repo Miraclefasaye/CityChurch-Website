@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Photos • City Church Halifax</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Poppins Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f5f5f5;
+      --header-bg: linear-gradient(135deg, #e0f7fa, #b2ebf2, #80deea);
+      --accent: #00bcd4;
+      --text-dark: #37474f;
+      --white: #ffffff;
+    }
+
+    /* —— RESET & BASE —— */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-family: Arial, sans-serif; line-height: 1.5; color: #333; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeIn 1s ease-in forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* —— HEADER —— */
+    header {
+      background: var(--header-bg);
+      padding: 1rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .logo {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+    }
+    nav a {
+      position: relative;
+      padding: .5rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: .9rem;
+      color: var(--text-dark);
+      transition: color .3s;
+    }
+    nav a:hover { color: var(--accent); }
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 0; height: 2px;
+      background: var(--accent);
+      transition: width .3s;
+    }
+    nav a:hover::after { width: 100%; }
+
+    /* —— MAIN CONTENT —— */
+    main { max-width: 960px; margin: 2rem auto; padding: 0 1rem; }
+    main h2 { font-size: 1.75rem; color: var(--accent); margin-bottom: .5rem; }
+    main p.lead { margin-bottom: 2rem; color: #555; }
+
+    /* —— SLIDER & THUMBNAILS —— */
+    .slider {
+      position: relative;
+      display: grid;
+      grid-template-columns: 3rem 1fr 3rem;
+      align-items: center;
+      column-gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .slider img#mainImage {
+      width: 100%;
+      border-radius: 8px;
+      background: #f5f5f5;
+      object-fit: cover;
+      height: 400px;
+    }
+    .slider button {
+      background: var(--accent);
+      border: none;
+      color: #fff;
+      font-size: 1.25rem;
+      padding: .75rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .slider button:hover { background: #008fa9; }
+
+    .thumbnails {
+      display: flex;
+      overflow-x: auto;
+      gap: .5rem;
+      padding: .5rem 0;
+    }
+    .thumbnails img {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 4px;
+      opacity: .6;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+    .thumbnails img.active {
+      opacity: 1;
+      border: 2px solid var(--accent);
+    }
+
+    /* —— FOOTER —— */
+    footer {
+      background: var(--header-bg);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    footer .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    footer .quick-links {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    footer .quick-links .btn {
+      padding: .5rem 1rem;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 4px;
+      font-size: .85rem;
+      text-decoration: none;
+    }
+    footer p { margin: 0; font-size: .9rem; }
+    .social-links img {
+      width: 32px;
+      filter: drop-shadow(0 0 5px var(--accent));
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER from index.html -->
+  <header>
+    <div class="container">
+      <div class="logo">CITYCHURCH</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="aboutus.html">About Us</a></li>
+          <li><a href="nextsteps.html">Next Steps</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="photos.html">Photos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- YOUR PHOTOS SLIDER & THUMBNAILS (exactly as it was) -->
+  <main>
+    <h2>Photos</h2>
+    <p class="lead">A glimpse into our life together — worship, fellowship, outreach and more.</p>
+
+    <div class="slider">
+      <button id="prevBtn" aria-label="Previous photo">←</button>
+      <img id="mainImage" src="" alt="Church photo">
+      <button id="nextBtn" aria-label="Next photo">→</button>
+    </div>
+    <div id="thumbs" class="thumbnails"></div>
+  </main>
+
+  <!-- FOOTER from index.html -->
+  <footer>
+    <div class="container">
+      <div class="quick-links">
+        <a class="btn" href="index.html">Home</a>
+        <a class="btn" href="aboutus.html">About Us</a>
+        <a class="btn" href="nextsteps.html">Next Steps</a>
+        <a class="btn" href="contact.html">Contact</a>
+        <a class="btn" href="photos.html">Photos</a>
+      </div>
+      <p><strong>Call:</strong> 902‑479‑2489</p>
+      <p>276 Herring Cove Road, Halifax NS B3P 1M1</p>
+      <p><a href="mailto:c.citychurch@ns.sympatico.ca" style="color:var(--white);">c.citychurch@ns.sympatico.ca</a></p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/CityChurchhalifax/live_videos" target="_blank">
+          <img src="wpimages/wp7c7fa511_06.png" alt="Facebook">
+        </a>
+        <a href="https://www.youtube.com/@citychurchhalifax5182" target="_blank">
+          <img src="wpimages/wp9eb22f9e_06.png" alt="YouTube">
+        </a>
+      </div>
+      <p>© 2025 City Church Halifax. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // point this at your wpimages folder:
+    const basePath = 'wpimages/';
+    // ALL your gallery filenames go here:
+    const filenames = [
+      '1a6141e3c022.jpg','87d798ef756.jpg','c40dd2f43297.jpg','af7434e99aeb.jpg',
+      '3f7394dd9c23.jpg','680396bf9dad.jpg','d0b1334921f3.jpg','e66ab19d7f2.jpg',
+      '19f917e2d2f0.jpg','3b87ddb49556.jpg','49e50ae8c700.jpg','4442da14ff26.jpg',
+      '860df793926a.jpg','82ed306f47c.jpg','4df9e24e95ed.jpg','52420adfe7a1.jpg',
+      'a6296fef68c8.jpg','fae56fe6cdb3.jpg','4d1f8112442f.jpg','93c819425c78.jpg',
+      'f92051fc29a.jpg','769c1959b957.jpg','2fd39dc628ac.jpg','40b851eeca0a.jpg',
+      '37e2096391b9.jpg','f02ea07212b2.jpg','60290046b391.jpg','b74b62df33f2.jpg',
+      '374b231938b.jpg','42b1a94cfda2.jpg','ce107ec490d9.jpg','ea280e1e8495.jpg',
+      '4933694cb415.jpg','a4433d3d3cd8.jpg','f3883418a683.jpg','aed59ab254ce.jpg',
+      '79b7f82bcc15.jpg','874a3a941709.jpg','bd52f77c5a4.jpg','e4f1ebbffd43.jpg',
+      '5e4ab6ebb7c2.jpg','163a575ffcd4.jpg','10944c1cb508.jpg','f5c04c078e6a.jpg',
+      'e3ce5e5f6b9f.jpg','22444dc2ae4e.jpg','7f19e3689201.jpg','6917f1302d18.jpg',
+      '5305c7d8684d.jpg','c4b413d0d97f.jpg','bc4063034134.jpg','30df76e0dfda.jpg',
+      'be1dde34831e.jpg','615be8c77f5f.jpg','3690e1e23b0f.jpg','fa18a4c977c.jpg',
+      '49b3851ee6ec.jpg','8e7f2c0f3cd8.jpg','c91aeea27f49.jpg','246abad3f94.jpg',
+      'a26308bf8831.jpg','1e764ea8e347.jpg','eb8c853b9ede.jpg','6fcd14a12d1.jpg',
+      'b5f276d72013.jpg','f271d726e8ad.jpg'
+    ];
+
+    const images = filenames.map(f => basePath + f);
+    let currentIndex = 0;
+
+    const mainImg = document.getElementById('mainImage');
+    const thumbs  = document.getElementById('thumbs');
+
+    // build thumbnails
+    images.forEach((src, i) => {
+      const t = document.createElement('img');
+      t.src = src;
+      t.alt = `Photo ${i+1}`;
+      t.addEventListener('click', () => showSlide(i));
+      thumbs.appendChild(t);
+    });
+
+    const thumbImgs = Array.from(thumbs.children);
+
+    function showSlide(idx) {
+      currentIndex = (idx + images.length) % images.length;
+      mainImg.src = images[currentIndex];
+      thumbImgs.forEach(img => img.classList.remove('active'));
+      thumbImgs[currentIndex].classList.add('active');
+    }
+
+    document.getElementById('prevBtn')
+      .addEventListener('click', () => showSlide(currentIndex - 1));
+    document.getElementById('nextBtn')
+      .addEventListener('click', () => showSlide(currentIndex + 1));
+
+    // kick it off
+    showSlide(0);
+  </script>
+</body>
+</html>
