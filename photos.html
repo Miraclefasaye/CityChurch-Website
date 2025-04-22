@@ -95,6 +95,20 @@
       color: var(--accent);
     }
 
+    #slider {
+      position: relative;
+      margin: 2rem 0;
+      overflow: hidden;
+    }
+
+    .slide { display: none; }
+    .slide.active { display: block; }
+    .slide img {
+      width: 100%;
+      height: auto;
+      filter: brightness(0.9);
+    }
+
     /* —— MAIN CONTENT —— */
     main {
       max-width: 960px;
