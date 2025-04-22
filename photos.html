@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Photos • City Church Halifax</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Poppins Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
@@ -20,9 +20,10 @@
     /* —— RESET & BASE —— */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-family: Arial, sans-serif; line-height: 1.5; color: #333; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
     body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
       font-family: 'Poppins', sans-serif;
       background: var(--bg);
       color: var(--text-dark);
@@ -34,163 +35,223 @@
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
+    a { text-decoration: none; color: var(--accent); }
+    a:hover { text-decoration: underline; }
 
-    /* —— HEADER —— */
+    /* —— HEADER (from About Us) —— */
     header {
       background: var(--header-bg);
       padding: 1rem 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
     }
+
     .logo {
       font-size: 1.75rem;
       font-weight: 700;
       color: var(--accent);
-      letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: .5rem;
     }
+
     nav ul {
-      list-style: none;
       display: flex;
-      gap: 2rem;
       justify-content: center;
+      gap: 2.5rem;
+      list-style: none;
+      margin-top: 0.5rem;
     }
+
     nav a {
-      position: relative;
-      padding: .5rem;
       font-weight: 500;
+      font-size: 1rem;
       text-transform: uppercase;
-      font-size: .9rem;
-      color: var(--text-dark);
-      transition: color .3s;
+      position: relative;
+      padding-bottom: 4px;
+      transition: all 0.3s ease;
     }
-    nav a:hover { color: var(--accent); }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
     nav a::after {
       content: '';
       position: absolute;
-      left: 0; bottom: 0;
-      width: 0; height: 2px;
-      background: var(--accent);
-      transition: width .3s;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background-color: var(--accent);
+      border-radius: 2px;
+      transition: width 0.3s ease;
     }
-    nav a:hover::after { width: 100%; }
+
+    nav a.active {
+      font-weight: 700;
+      color: var(--accent);
+    }
 
     /* —— MAIN CONTENT —— */
-    main { max-width: 960px; margin: 2rem auto; padding: 0 1rem; }
-    main h2 { font-size: 1.75rem; color: var(--accent); margin-bottom: .5rem; }
+    main {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      flex: 1;
+    }
+    main h2 { font-size: 1.75rem; color: var(--accent); margin-bottom: 0.5rem; }
     main p.lead { margin-bottom: 2rem; color: #555; }
 
     /* —— SLIDER & THUMBNAILS —— */
     .slider {
-      position: relative;
       display: grid;
       grid-template-columns: 3rem 1fr 3rem;
       align-items: center;
-      column-gap: 1rem;
+      gap: 1rem;
       margin-bottom: 1.5rem;
     }
     .slider img#mainImage {
       width: 100%;
+      height: 400px;
+      object-fit: cover;
       border-radius: 8px;
       background: #f5f5f5;
-      object-fit: cover;
-      height: 400px;
     }
     .slider button {
       background: var(--accent);
       border: none;
       color: #fff;
       font-size: 1.25rem;
-      padding: .75rem;
+      padding: 0.75rem;
       border-radius: 6px;
       cursor: pointer;
+      transition: background 0.3s;
     }
     .slider button:hover { background: #008fa9; }
 
     .thumbnails {
       display: flex;
       overflow-x: auto;
-      gap: .5rem;
-      padding: .5rem 0;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
     }
     .thumbnails img {
-      width: 80px;
-      height: 60px;
+      width: 80px; height: 60px;
       object-fit: cover;
       border-radius: 4px;
-      opacity: .6;
+      opacity: 0.6;
       cursor: pointer;
       flex: 0 0 auto;
+      transition: opacity 0.3s, border 0.3s;
     }
     .thumbnails img.active {
       opacity: 1;
       border: 2px solid var(--accent);
     }
 
-    /* —— FOOTER —— */
+    /* —— FOOTER (from index/About Us) —— */
     footer {
       background: var(--header-bg);
       color: var(--white);
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 1rem 0 1.2rem;
+      font-size: 0.85rem;
+      animation: fadeInFooter 0.6s ease-in;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
     }
+
+    @keyframes fadeInFooter {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     footer .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1rem;
+      gap: 0.7rem;
     }
+
     footer .quick-links {
       display: flex;
-      gap: .5rem;
+      gap: 0.4rem;
       flex-wrap: wrap;
-      margin-bottom: 1rem;
+      justify-content: center;
+      margin-bottom: 0.7rem;
     }
-    footer .quick-links .btn {
-      padding: .5rem 1rem;
+
+    footer .btn {
+      padding: 0.4rem 0.9rem;
       background: var(--accent);
       color: var(--white);
-      border-radius: 4px;
-      font-size: .85rem;
-      text-decoration: none;
+      border-radius: 5px;
+      font-size: 0.82rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    footer p { margin: 0; font-size: .9rem; }
-    .social-links img {
-      width: 32px;
+
+    footer .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(0, 188, 212, 0.25);
+    }
+
+    footer .social-links {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 0.3rem;
+    }
+
+    footer .social-links img {
+      width: 28px;
+      height: auto;
+      transition: transform 0.3s ease;
       filter: drop-shadow(0 0 5px var(--accent));
+    }
+
+    footer .social-links img:hover {
+      transform: scale(1.08);
+    }
+
+    footer p {
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    footer a {
+      color: var(--white);
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #e0f7fa;
     }
   </style>
 </head>
-
 <body>
 
-  <!-- HEADER from index.html -->
+  <!-- HEADER exactly like About Us -->
   <header>
-    <div class="container">
-      <div class="logo">CITYCHURCH</div>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="aboutus.html">About Us</a></li>
-          <li><a href="nextsteps.html">Next Steps</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="photos.html">Photos</a></li>
-        </ul>
-      </nav>
-    </div>
+    <div class="logo">CITYCHURCH</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="nextsteps.html">Next Steps</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+        <li><a href="photos.html">Photos</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- YOUR PHOTOS SLIDER & THUMBNAILS (exactly as it was) -->
+  <!-- YOUR PHOTOS SLIDER & THUMBNAILS (unchanged) -->
   <main>
     <h2>Photos</h2>
-    <p class="lead">A glimpse into our life together — worship, fellowship, outreach and more.</p>
+    <p class="lead">A glimpse into our life together — worship, fellowship, outreach and more.</p>
 
     <div class="slider">
       <button id="prevBtn" aria-label="Previous photo">←</button>
@@ -200,14 +261,14 @@
     <div id="thumbs" class="thumbnails"></div>
   </main>
 
-  <!-- FOOTER from index.html -->
+  <!-- FOOTER exactly like About Us/index -->
   <footer>
     <div class="container">
       <div class="quick-links">
         <a class="btn" href="index.html">Home</a>
         <a class="btn" href="aboutus.html">About Us</a>
         <a class="btn" href="nextsteps.html">Next Steps</a>
-        <a class="btn" href="contact.html">Contact</a>
+        <a class="btn" href="contactus.html">Contact</a>
         <a class="btn" href="photos.html">Photos</a>
       </div>
       <p><strong>Call:</strong> 902‑479‑2489</p>
@@ -221,7 +282,7 @@
           <img src="wpimages/wp9eb22f9e_06.png" alt="YouTube">
         </a>
       </div>
-      <p>© 2025 City Church Halifax. All rights reserved.</p>
+      <p>© 2025 City Church Halifax. All rights reserved.</p>
     </div>
   </footer>
 
@@ -238,13 +299,7 @@
       'f92051fc29a.jpg','769c1959b957.jpg','2fd39dc628ac.jpg','40b851eeca0a.jpg',
       '37e2096391b9.jpg','f02ea07212b2.jpg','60290046b391.jpg','b74b62df33f2.jpg',
       '374b231938b.jpg','42b1a94cfda2.jpg','ce107ec490d9.jpg','ea280e1e8495.jpg',
-      '4933694cb415.jpg','a4433d3d3cd8.jpg','f3883418a683.jpg','aed59ab254ce.jpg',
-      '79b7f82bcc15.jpg','874a3a941709.jpg','bd52f77c5a4.jpg','e4f1ebbffd43.jpg',
-      '5e4ab6ebb7c2.jpg','163a575ffcd4.jpg','10944c1cb508.jpg','f5c04c078e6a.jpg',
-      'e3ce5e5f6b9f.jpg','22444dc2ae4e.jpg','7f19e3689201.jpg','6917f1302d18.jpg',
-      '5305c7d8684d.jpg','c4b413d0d97f.jpg','bc4063034134.jpg','30df76e0dfda.jpg',
-      'be1dde34831e.jpg','615be8c77f5f.jpg','3690e1e23b0f.jpg','fa18a4c977c.jpg',
-      '49b3851ee6ec.jpg','8e7f2c0f3cd8.jpg','c91aeea27f49.jpg','246abad3f94.jpg',
+      '4933694cb415.jpg','8e7f2c0f3cd8.jpg','c91aeea27f49.jpg','246abad3f94.jpg',
       'a26308bf8831.jpg','1e764ea8e347.jpg','eb8c853b9ede.jpg','6fcd14a12d1.jpg',
       'b5f276d72013.jpg','f271d726e8ad.jpg'
     ];
