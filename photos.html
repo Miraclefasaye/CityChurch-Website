@@ -35,8 +35,11 @@
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
+
+    /* keep underlines on regular links, but NOT on nav */
     a { text-decoration: none; color: var(--accent); }
-    a:hover { text-decoration: underline; }
+    /* nav links only: suppress the generic underline on hover */
+    nav a:hover { text-decoration: none; }
 
     /* —— HEADER (from About Us) —— */
     header {
@@ -48,65 +51,50 @@
       top: 0;
       z-index: 1000;
     }
-
     .logo {
       font-size: 1.75rem;
       font-weight: 700;
       color: var(--accent);
       text-transform: uppercase;
+      margin-bottom: .5rem;
     }
-
     nav ul {
       display: flex;
       justify-content: center;
       gap: 2.5rem;
       list-style: none;
-      margin-top: 0.5rem;
+      margin-top: .5rem;
     }
-
     nav a {
       font-weight: 500;
       font-size: 1rem;
       text-transform: uppercase;
       position: relative;
       padding-bottom: 4px;
-      transition: all 0.3s ease;
+      transition: color 0.3s ease;
+      color: var(--text-dark);
     }
-
-    nav a:hover::after,
-    nav a.active::after {
-      width: 100%;
-    }
-
+    /* the underline bar */
     nav a::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 3px;
-      width: 0;
+      bottom: 0; left: 0;
+      width: 0; height: 3px;
       background-color: var(--accent);
       border-radius: 2px;
       transition: width 0.3s ease;
     }
-
-    nav a.active {
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    #slider {
-      position: relative;
-      margin: 2rem 0;
-      overflow: hidden;
-    }
-
-    .slide { display: none; }
-    .slide.active { display: block; }
-    .slide img {
+    /* hover effect on non-active items */
+    nav a:hover::after {
       width: 100%;
-      height: auto;
-      filter: brightness(0.9);
+    }
+    /* active page styling: color + permanent underline */
+    nav a.active {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    nav a.active::after {
+      width: 100%;
     }
 
     /* —— MAIN CONTENT —— */
@@ -116,7 +104,7 @@
       padding: 0 1rem;
       flex: 1;
     }
-    main h2 { font-size: 1.75rem; color: var(--accent); margin-bottom: 0.5rem; }
+    main h2 { font-size: 1.75rem; color: var(--accent); margin-bottom: .5rem; }
     main p.lead { margin-bottom: 2rem; color: #555; }
 
     /* —— SLIDER & THUMBNAILS —— */
@@ -139,7 +127,7 @@
       border: none;
       color: #fff;
       font-size: 1.25rem;
-      padding: 0.75rem;
+      padding: .75rem;
       border-radius: 6px;
       cursor: pointer;
       transition: background 0.3s;
@@ -149,14 +137,14 @@
     .thumbnails {
       display: flex;
       overflow-x: auto;
-      gap: 0.5rem;
-      padding: 0.5rem 0;
+      gap: .5rem;
+      padding: .5rem 0;
     }
     .thumbnails img {
       width: 80px; height: 60px;
       object-fit: cover;
       border-radius: 4px;
-      opacity: 0.6;
+      opacity: .6;
       cursor: pointer;
       flex: 0 0 auto;
       transition: opacity 0.3s, border 0.3s;
@@ -166,22 +154,15 @@
       border: 2px solid var(--accent);
     }
 
-    /* —— FOOTER (from index/About Us) —— */
+    /* —— FOOTER (from index/About Us) —— */
     footer {
       background: var(--header-bg);
       color: var(--white);
       text-align: center;
       padding: 1rem 0 1.2rem;
-      font-size: 0.85rem;
-      animation: fadeInFooter 0.6s ease-in;
-      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+      font-size: .85rem;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
     }
-
-    @keyframes fadeInFooter {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     footer .container {
       max-width: 900px;
       margin: 0 auto;
@@ -189,66 +170,49 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.7rem;
+      gap: .7rem;
     }
-
     footer .quick-links {
       display: flex;
-      gap: 0.4rem;
+      gap: .4rem;
       flex-wrap: wrap;
       justify-content: center;
-      margin-bottom: 0.7rem;
+      margin-bottom: .7rem;
     }
-
     footer .btn {
-      padding: 0.4rem 0.9rem;
+      padding: .4rem .9rem;
       background: var(--accent);
       color: var(--white);
       border-radius: 5px;
-      font-size: 0.82rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      font-size: .82rem;
+      transition: transform .2s ease, box-shadow .2s ease;
+      text-decoration: none;
     }
-
     footer .btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 3px 8px rgba(0, 188, 212, 0.25);
+      box-shadow: 0 3px 8px rgba(0,188,212,0.25);
     }
-
     footer .social-links {
       display: flex;
-      gap: 0.6rem;
-      margin-top: 0.3rem;
+      gap: .6rem;
+      margin-top: .3rem;
     }
-
     footer .social-links img {
       width: 28px;
-      height: auto;
-      transition: transform 0.3s ease;
+      transition: transform .3s ease;
       filter: drop-shadow(0 0 5px var(--accent));
     }
-
     footer .social-links img:hover {
       transform: scale(1.08);
     }
-
-    footer p {
-      margin: 0;
-      line-height: 1.4;
-    }
-
-    footer a {
-      color: var(--white);
-      transition: color 0.3s ease;
-    }
-
-    footer a:hover {
-      color: #e0f7fa;
-    }
+    footer p { margin: 0; line-height: 1.4; }
+    footer a { color: var(--white); transition: color .3s ease; }
+    footer a:hover { color: #e0f7fa; }
   </style>
 </head>
 <body>
 
-  <!-- HEADER exactly like About Us -->
+  <!-- HEADER -->
   <header>
     <div class="logo">CITYCHURCH</div>
     <nav>
@@ -262,7 +226,7 @@
     </nav>
   </header>
 
-  <!-- YOUR PHOTOS SLIDER & THUMBNAILS (unchanged) -->
+  <!-- SLIDER & THUMBNAILS (unchanged) -->
   <main>
     <h2>Photos</h2>
     <p class="lead">A glimpse into our life together — worship, fellowship, outreach and more.</p>
@@ -275,7 +239,7 @@
     <div id="thumbs" class="thumbnails"></div>
   </main>
 
-  <!-- FOOTER exactly like About Us/index -->
+  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="quick-links">
@@ -287,7 +251,7 @@
       </div>
       <p><strong>Call:</strong> 902‑479‑2489</p>
       <p>276 Herring Cove Road, Halifax NS B3P 1M1</p>
-      <p><a href="mailto:c.citychurch@ns.sympatico.ca" style="color:var(--white);">c.citychurch@ns.sympatico.ca</a></p>
+      <p><a href="mailto:c.citychurch@ns.sympatico.ca">c.citychurch@ns.sympatico.ca</a></p>
       <div class="social-links">
         <a href="https://www.facebook.com/CityChurchhalifax/live_videos" target="_blank">
           <img src="wpimages/wp7c7fa511_06.png" alt="Facebook">
@@ -301,31 +265,34 @@
   </footer>
 
   <script>
-    // point this at your wpimages folder:
-    const basePath = 'wpimages/';
-    // ALL your gallery filenames go here:
-    const filenames = [
-      '1a6141e3c022.jpg','87d798ef756.jpg','c40dd2f43297.jpg','af7434e99aeb.jpg',
-      '3f7394dd9c23.jpg','680396bf9dad.jpg','d0b1334921f3.jpg','e66ab19d7f2.jpg',
-      '19f917e2d2f0.jpg','3b87ddb49556.jpg','49e50ae8c700.jpg','4442da14ff26.jpg',
-      '860df793926a.jpg','82ed306f47c.jpg','4df9e24e95ed.jpg','52420adfe7a1.jpg',
-      'a6296fef68c8.jpg','fae56fe6cdb3.jpg','4d1f8112442f.jpg','93c819425c78.jpg',
-      'f92051fc29a.jpg','769c1959b957.jpg','2fd39dc628ac.jpg','40b851eeca0a.jpg',
-      '37e2096391b9.jpg','f02ea07212b2.jpg','60290046b391.jpg','b74b62df33f2.jpg',
-      '374b231938b.jpg','42b1a94cfda2.jpg','ce107ec490d9.jpg','ea280e1e8495.jpg',
-      '4933694cb415.jpg','8e7f2c0f3cd8.jpg','c91aeea27f49.jpg','246abad3f94.jpg',
-      'a26308bf8831.jpg','1e764ea8e347.jpg','eb8c853b9ede.jpg','6fcd14a12d1.jpg',
-      'b5f276d72013.jpg','f271d726e8ad.jpg'
-    ];
+    // mark the active nav link
+    document.querySelectorAll('nav a').forEach(a => {
+      if (a.getAttribute('href') === location.pathname.split('/').pop()) {
+        a.classList.add('active');
+      }
+    });
 
-    const images = filenames.map(f => basePath + f);
+    // gallery JS (unchanged)
+    const basePath = 'wpimages/',
+          filenames = [
+            '1a6141e3c022.jpg','87d798ef756.jpg','c40dd2f43297.jpg','af7434e99aeb.jpg',
+            '3f7394dd9c23.jpg','680396bf9dad.jpg','d0b1334921f3.jpg','e66ab19d7f2.jpg',
+            '19f917e2d2f0.jpg','3b87ddb49556.jpg','49e50ae8c700.jpg','4442da14ff26.jpg',
+            '860df793926a.jpg','82ed306f47c.jpg','4df9e24e95ed.jpg','52420adfe7a1.jpg',
+            'a6296fef68c8.jpg','fae56fe6cdb3.jpg','4d1f8112442f.jpg','93c819425c78.jpg',
+            'f92051fc29a.jpg','769c1959b957.jpg','2fd39dc628ac.jpg','40b851eeca0a.jpg',
+            '37e2096391b9.jpg','f02ea07212b2.jpg','60290046b391.jpg','b74b62df33f2.jpg',
+            '374b231938b.jpg','42b1a94cfda2.jpg','ce107ec490d9.jpg','ea280e1e8495.jpg',
+            '4933694cb415.jpg','8e7f2c0f3cd8.jpg','c91aeea27f49.jpg','246abad3f94.jpg',
+            'a26308bf8831.jpg','1e764ea8e347.jpg','eb8c853b9ede.jpg','6fcd14a12d1.jpg',
+            'b5f276d72013.jpg','f271d726e8ad.jpg'
+          ],
+          images = filenames.map(f => basePath + f);
     let currentIndex = 0;
+    const mainImg = document.getElementById('mainImage'),
+          thumbs  = document.getElementById('thumbs');
 
-    const mainImg = document.getElementById('mainImage');
-    const thumbs  = document.getElementById('thumbs');
-
-    // build thumbnails
-    images.forEach((src, i) => {
+    images.forEach((src,i) => {
       const t = document.createElement('img');
       t.src = src;
       t.alt = `Photo ${i+1}`;
@@ -334,20 +301,16 @@
     });
 
     const thumbImgs = Array.from(thumbs.children);
-
     function showSlide(idx) {
       currentIndex = (idx + images.length) % images.length;
       mainImg.src = images[currentIndex];
       thumbImgs.forEach(img => img.classList.remove('active'));
       thumbImgs[currentIndex].classList.add('active');
     }
-
     document.getElementById('prevBtn')
       .addEventListener('click', () => showSlide(currentIndex - 1));
     document.getElementById('nextBtn')
       .addEventListener('click', () => showSlide(currentIndex + 1));
-
-    // kick it off
     showSlide(0);
   </script>
 </body>
