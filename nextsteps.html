@@ -7,10 +7,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f5f5f5;
-      --header-bg: linear-gradient(135deg, #e0f7fa, #b2ebf2, #80deea);
-      --accent: #00bcd4;
-      --text-dark: #37474f;
+      --bg: #ffffff; /* White background to match index */
+      --header-bg: #1e1e1e;
+      --accent: #37474f; /* Darker accent color */
+      --text-dark: #37474f; /* Dark text */
       --white: #ffffff;
     }
 
@@ -44,25 +44,23 @@
       background: var(--header-bg);
       padding: 1rem 2rem;
       text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
       position: sticky;
       top: 0;
       z-index: 1000;
     }
 
-    .logo {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-transform: uppercase;
+    .logo img {
+      height: 60px;
     }
 
     nav ul {
       display: flex;
       justify-content: center;
-      gap: 2.5rem;
+      gap: 2rem;
       list-style: none;
       margin-top: 0.5rem;
+      flex-wrap: wrap;
     }
 
     nav a {
@@ -72,11 +70,13 @@
       position: relative;
       padding-bottom: 4px;
       transition: all 0.3s ease;
+      color: var(--white);
     }
 
     nav a:hover::after,
     nav a.active::after {
       width: 100%;
+      background-color: var(--white);
     }
 
     nav a::after {
@@ -86,17 +86,16 @@
       left: 0;
       height: 3px;
       width: 0;
-      background-color: var(--accent);
+      background-color: var(--white);
       border-radius: 2px;
       transition: width 0.3s ease;
     }
 
     nav a.active {
       font-weight: 700;
-      color: var(--accent);
+      color: var(--white);
     }
 
-    /* Hero Banner */
     .hero-banner {
       width: 100vw;
       max-width: 100%;
@@ -155,7 +154,7 @@
     }
 
     .cta-button:hover {
-      background: #00acc1;
+      background: #2a4d5d;
     }
 
     blockquote {
@@ -183,11 +182,12 @@
       max-width: 500px;
       text-align: center;
       transition: transform .2s, box-shadow .3s;
+      color: var(--text-dark);
     }
 
     .next-steps-links a:hover {
       transform: scale(1.04);
-      box-shadow: 0 6px 16px rgba(0,188,212,0.25);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     }
 
     footer {
@@ -197,7 +197,7 @@
       padding: 1rem 0 1.2rem;
       font-size: 0.85rem;
       animation: fadeInFooter 0.6s ease-in;
-      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
     }
 
     @keyframes fadeInFooter {
@@ -234,7 +234,7 @@
 
     footer .btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 3px 8px rgba(0, 188, 212, 0.25);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
     }
 
     footer .social-links {
@@ -259,24 +259,38 @@
       line-height: 1.4;
     }
 
-    footer a {
-      color: var(--white);
-      transition: color 0.3s ease;
+    footer a:hover {
+      color: #cccccc;
     }
 
-    footer a:hover {
-      color: #e0f7fa;
+    @media (max-width: 600px) {
+      header {
+        padding: .75rem 1rem;
+      }
+      .logo img {
+        height: 50px;
+      }
+      nav ul {
+        gap: 1rem;
+      }
+      nav a {
+        font-size: .9rem;
+      }
+      main {
+        margin: 1.5rem auto;
+        padding: 0 .75rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">CITYCHURCH</div>
+    <div class="logo"><img src="wpimages/wp6ba87a7e_05_06.jpg" alt="City Church Halifax Logo"></div>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="aboutus.html">About Us</a></li>
-        <li><a href="nextsteps.html">Next Steps</a></li>
+        <li><a href="nextsteps.html" class="active">Next Steps</a></li>
         <li><a href="contactus.html">Contact</a></li>
         <li><a href="photos.html">Photos</a></li>
       </ul>
@@ -322,7 +336,7 @@
       </div>
       <p><strong>Call:</strong> 902-479-2489</p>
       <p>276 Herring Cove Road, Halifax NS B3P 1M1</p>
-      <p><a href="mailto:C.citychurch@ns.sympatico.ca" style="color:var(--accent);">C.citychurch@ns.sympatico.ca</a></p>
+      <p><a href="mailto:C.citychurch@ns.sympatico.ca">C.citychurch@ns.sympatico.ca</a></p>
       <div class="social-links">
         <a href="https://www.facebook.com/CityChurchhalifax/live_videos" target="_blank">
           <img src="wpimages/wp7c7fa511_06.png" alt="Facebook">
@@ -336,7 +350,6 @@
   </footer>
 
   <script>
-    // Highlight current nav link
     const links = document.querySelectorAll('nav a');
     const current = window.location.pathname.split("/").pop();
     links.forEach(link => {
@@ -346,5 +359,4 @@
     });
   </script>
 </body>
-
 </html>

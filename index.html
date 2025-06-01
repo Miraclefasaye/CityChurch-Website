@@ -8,9 +8,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f5f5f5;
-      --header-bg: linear-gradient(135deg, #e0f7fa, #b2ebf2, #80deea);
-      --accent: #00bcd4;
+      --bg: #ffffff;
+      --header-bg: #1e1e1e;
+      --accent: #37474f;
       --text-dark: #37474f;
       --white: #ffffff;
     }
@@ -45,25 +45,23 @@
       background: var(--header-bg);
       padding: 1rem 2rem;
       text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
       position: sticky;
       top: 0;
       z-index: 1000;
     }
 
-    .logo {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-transform: uppercase;
+    .logo img {
+      height: 60px;
     }
 
     nav ul {
       display: flex;
       justify-content: center;
-      gap: 2.5rem;
+      gap: 2rem;
       list-style: none;
       margin-top: 0.5rem;
+      flex-wrap: wrap; /* Makes nav flexible for mobile */
     }
 
     nav a {
@@ -73,11 +71,13 @@
       position: relative;
       padding-bottom: 4px;
       transition: all 0.3s ease;
+      color: var(--white);
     }
 
     nav a:hover::after,
     nav a.active::after {
       width: 100%;
+      background-color: var(--white);
     }
 
     nav a::after {
@@ -87,14 +87,14 @@
       left: 0;
       height: 3px;
       width: 0;
-      background-color: var(--accent);
+      background-color: var(--white);
       border-radius: 2px;
       transition: width 0.3s ease;
     }
 
     nav a.active {
       font-weight: 700;
-      color: var(--accent);
+      color: var(--white);
     }
 
     #slider {
@@ -161,6 +161,7 @@
       text-align: center;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       transition: transform 0.2s;
+      color: var(--text-dark);
     }
 
     .quick-grid .grid-item img {
@@ -189,7 +190,7 @@
     .pastor img {
       width: 180px;
       border-radius: 50%;
-      box-shadow: 0 0 8px rgba(0,188,212,0.5);
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
     }
 
     .pastor-content h3 {
@@ -210,6 +211,7 @@
       border-radius: 8px;
       text-align: center;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      color: var(--text-dark);
     }
 
     .card h3 {
@@ -218,91 +220,100 @@
       margin-bottom: 0.5rem;
     }
 
-   footer {
-  background: var(--header-bg);
-  color: var(--white);
-  text-align: center;
-  padding: 1rem 0 1.2rem;
-  font-size: 0.85rem;
-  animation: fadeInFooter 0.6s ease-in;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-}
+    .pastor-message {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-top: 3rem;
+    }
 
-@keyframes fadeInFooter {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+    .pastor-message h3 {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
 
-footer .container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.7rem;
-}
+    footer {
+      background: var(--header-bg);
+      color: var(--white);
+      text-align: center;
+      padding: 1rem 0 1.2rem;
+      font-size: 0.85rem;
+      animation: fadeInFooter 0.6s ease-in;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+    }
 
-footer .quick-links {
-  display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 0.7rem;
-}
+    footer .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.7rem;
+    }
 
-footer .btn {
-  padding: 0.4rem 0.9rem;
-  background: var(--accent);
-  color: var(--white);
-  border-radius: 5px;
-  font-size: 0.82rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+    footer .quick-links {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 0.7rem;
+    }
 
-footer .btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 3px 8px rgba(0, 188, 212, 0.25);
-}
+    footer .btn {
+      padding: 0.4rem 0.9rem;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 5px;
+      font-size: 0.82rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
-footer .social-links {
-  display: flex;
-  gap: 0.6rem;
-  margin-top: 0.3rem;
-}
+    footer .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    }
 
-footer .social-links img {
-  width: 28px;
-  height: auto;
-  transition: transform 0.3s ease;
-  filter: drop-shadow(0 0 5px var(--accent));
-}
+    footer .social-links {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 0.3rem;
+    }
 
-footer .social-links img:hover {
-  transform: scale(1.08);
-}
+    footer .social-links img {
+      width: 28px;
+      height: auto;
+      transition: transform 0.3s ease;
+      filter: drop-shadow(0 0 5px var(--accent));
+    }
 
-footer p {
-  margin: 0;
-  line-height: 1.4;
-}
+    footer .social-links img:hover {
+      transform: scale(1.08);
+    }
 
-footer a {
-  color: var(--white);
-  transition: color 0.3s ease;
-}
+    footer p {
+      margin: 0;
+      line-height: 1.4;
+    }
 
-footer a:hover {
-  color: #e0f7fa;
-}
+    footer a:hover {
+      color: #cccccc;
+    }
 
-
+    @keyframes fadeInFooter {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">CITYCHURCH</div>
+  <div class="logo">
+    <img src="wpimages/wp6ba87a7e_05_06.jpg" alt="City Church Halifax Logo">
+  </div>
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -345,10 +356,11 @@ footer a:hover {
   <section class="quick-grid">
     <h2>Quick Links</h2>
     <div class="grid">
-      <a href="#" class="grid-item"><img src="375876199_704416011724711_635235102131863397_n.jpg" alt="Stream"><h4>Live Stream</h4></a>
-      <a href="#" class="grid-item"><img src="Give-Online-Slide2.x60128.jpeg" alt="Give"><h4>Give Online</h4></a>
-      <a href="#" class="grid-item"><img src="facebook_live.webp" alt="Facebook"><h4>Facebook Live</h4></a>
-      <a href="#" class="grid-item"><img src="wpimages/wp9eb22f9e_06.png" alt="YouTube"><h4>YouTube</h4></a>
+      <a href="https://iframe.dacast.com/live/6ea4618901a3a8556d083a7d5ce8c06d/4caafe1e-213b-b00a-0fb8-e08d5108f186" class="grid-item"><img src="375876199_704416011724711_635235102131863397_n.jpg" alt="Stream"><h4>Live Stream</h4></a>
+      <a href="https://give.tithe.ly/?formId=7e0e8666-6864-11ee-90fc-1260ab546d11" class="grid-item"><img src="Give-Online-Slide2.x60128.jpeg" alt="Give"><h4>Give Online</h4></a>
+      <a href="https://www.facebook.com/CityChurchhalifax/videos" class="grid-item"><img src="facebook_live.webp" alt="Facebook"><h4>Facebook Live</h4></a>
+      <a href="https://www.youtube.com/@citychurchhalifax5182" class="grid-item"><img src="wpimages/wp9eb22f9e_06.png" alt="YouTube"><h4>YouTube</h4></a>
+      <a href="https://www.life947fm.com/index.html" class="grid-item"><img src="wpimages/life.jpg" alt="Radio"><h4>Radio</h4></a>
     </div>
   </section>
 
@@ -363,6 +375,12 @@ footer a:hover {
   <section class="info-cards">
     <div class="card"><h3>Sunday Service</h3><p>10:30 AM</p></div>
     <div class="card"><h3>Wednesday Night Prayer</h3><p>7:00 PM on Zoom</p></div>
+  </section>
+
+  <section class="pastor-message">
+    <h3>Meet Our Pastor</h3>
+    <p>Pastor Gerald along with his wife Tami look forward to meeting you at a Sunday Service. Pastor Gerald has been in the full-time ministry for 30 years as a youth pastor, assistant pastor and now Lead Pastor of City Church Halifax. We are apart of the Pentecostal Holiness Church of Canada and IPHC.</p>
+    <p>We are believing for families that will answer the Call of God and join the team at City Church. We are a family size church with lots of room to grow.</p>
   </section>
 </main>
 
@@ -407,5 +425,4 @@ footer a:hover {
 </script>
 
 </body>
-
 </html>
